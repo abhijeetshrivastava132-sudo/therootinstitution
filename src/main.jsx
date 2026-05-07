@@ -82,19 +82,19 @@ const teachingSteps = [
 ];
 
 const sectionShell = 'w-full max-w-full overflow-hidden px-4 sm:px-6 lg:px-8';
-const sectionInner = 'mx-auto w-full max-w-6xl';
+const sectionInner = 'mx-auto w-full max-w-6xl min-w-0';
 
 function Header() {
   return (
     <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
-        <a href="#home" className="group flex min-w-0 items-center gap-3" aria-label="The Root Institute of Education home">
+      <nav className="mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-3 overflow-hidden px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
+        <a href="#home" className="group flex min-w-0 flex-1 items-center gap-3 overflow-hidden" aria-label="The Root Institute of Education home">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-900 text-amber-300 shadow-soft transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
             <Sprout size={24} strokeWidth={2.4} />
           </span>
           <span className="min-w-0 leading-tight">
             <span className="block truncate font-serif text-lg font-bold tracking-tight text-emerald-950 sm:text-xl">The Root Institute</span>
-            <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">of Education</span>
+            <span className="block truncate text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">of Education</span>
           </span>
         </a>
 
@@ -116,8 +116,8 @@ function Header() {
           </button>
         </div>
       </nav>
-      <div className="border-t border-emerald-950/5 px-4 pb-3 lg:hidden">
-        <div className="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="w-full max-w-full overflow-hidden border-t border-emerald-950/5 px-4 pb-3 lg:hidden">
+        <div className="mx-auto flex w-full max-w-6xl min-w-0 gap-2 overflow-x-auto pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="shrink-0 rounded-full bg-white px-3.5 py-2 text-xs font-bold text-emerald-950 shadow-card transition hover:bg-amber-100">
               {link.label}
@@ -131,12 +131,12 @@ function Header() {
 
 function HeroIllustration() {
   return (
-    <div className="relative mx-auto w-full max-w-sm animate-float lg:max-w-md" aria-label="Tree growing from an open book illustration">
-      <div className="absolute -left-6 top-10 h-24 w-24 rounded-full bg-amber-300/30 blur-2xl" />
-      <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-emerald-500/20 blur-2xl" />
-      <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/80 bg-white p-5 shadow-premium sm:p-6">
-        <div className="mb-6 flex items-center justify-between gap-3">
-          <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">CBSE & Bihar Board</span>
+    <div className="relative mx-auto w-full max-w-full animate-float overflow-hidden sm:max-w-sm sm:overflow-visible lg:max-w-md" aria-label="Tree growing from an open book illustration">
+      <div className="absolute left-0 top-10 h-24 w-24 rounded-full bg-amber-300/30 blur-2xl sm:-left-6" />
+      <div className="absolute right-0 bottom-10 h-28 w-28 rounded-full bg-emerald-500/20 blur-2xl sm:-right-6" />
+      <div className="relative w-full max-w-full overflow-hidden rounded-[2rem] border border-white/80 bg-white p-5 shadow-premium sm:p-6">
+        <div className="mb-6 flex min-w-0 flex-wrap items-center justify-between gap-3">
+          <span className="min-w-0 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">CBSE & Bihar Board</span>
           <Sparkles className="shrink-0 text-amber-500" size={22} />
         </div>
 
@@ -177,7 +177,7 @@ function HeroIllustration() {
 
 function SectionHeader({ eyebrow, title, text, dark = false }) {
   return (
-    <div className="mx-auto mb-10 max-w-2xl text-center">
+    <div className="mx-auto mb-10 w-full max-w-2xl min-w-0 text-center">
       {eyebrow && (
         <p className={`mb-3 text-sm font-bold uppercase tracking-[0.28em] ${dark ? 'text-amber-300' : 'text-amber-700'}`}>
           {eyebrow}
@@ -202,13 +202,13 @@ function App() {
                 <Sprout size={17} className="text-amber-600" />
                 Premium coaching for students and parents
               </div>
-              <h1 className="font-serif text-5xl font-black leading-[1.05] tracking-tight text-emerald-950 sm:text-6xl lg:text-7xl">
+              <h1 className="break-words font-serif text-5xl font-black leading-[1.05] tracking-tight text-emerald-950 sm:text-6xl lg:text-7xl">
                 Strong Roots. <span className="text-amber-600">Bright Future.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-650 lg:mx-0">
                 Premium coaching for Class 6 to 10 all subjects and Class 11 to 12 Mathematics, for CBSE and Bihar Board students.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
                 <a href={PHONE_LINK} className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-900 px-6 py-4 text-base font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-emerald-800">
                   <Phone size={19} /> Call Now
                 </a>
@@ -256,14 +256,14 @@ function App() {
         <section id="classes" className={`bg-white/55 ${sectionShell} py-16`}>
           <div className={sectionInner}>
             <SectionHeader eyebrow="Classes" title="Focused Coaching from Class 6 to 12" text="Two clear academic programs support school learning, board preparation, and confident concept development." />
-            <div className="grid w-full gap-5 lg:grid-cols-2">
+            <div className="grid w-full min-w-0 gap-5 lg:grid-cols-2">
               {classCards.map(({ title, subtitle, badge, icon: Icon, details }) => (
-                <article key={title} className="rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-8">
-                  <div className="mb-6 flex items-center justify-between gap-3">
+                <article key={title} className="min-w-0 rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-8">
+                  <div className="mb-6 flex min-w-0 flex-wrap items-center justify-between gap-3">
                     <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-700">
                       <Icon size={26} />
                     </div>
-                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">{badge}</span>
+                    <span className="min-w-0 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">{badge}</span>
                   </div>
                   <h3 className="font-serif text-3xl font-bold text-emerald-950">{title}</h3>
                   <p className="mt-2 text-lg font-bold text-amber-700">{subtitle}</p>
@@ -284,9 +284,9 @@ function App() {
         <section id="why-us" className={`${sectionShell} py-16`}>
           <div className={sectionInner}>
             <SectionHeader eyebrow="Why Choose Us" title="A Premium Local Institute with Personal Care" text="Parents can trust a disciplined, simple, and concept-first approach made for school success and board readiness." />
-            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid w-full min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {whyUs.map(({ title, icon: Icon }) => (
-                <article key={title} className="flex items-start gap-4 rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+                <article key={title} className="flex min-w-0 items-start gap-4 rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                   <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-900 text-amber-300">
                     <Icon size={23} />
                   </div>
@@ -306,7 +306,7 @@ function App() {
                 Students get well-structured notes in printed or PDF format to make revision easier and more effective.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
               {['Organized chapters', 'Easy revision', 'Exam-focused points', 'Available in PDF'].map((item) => (
                 <div key={item} className="rounded-3xl border border-white/10 bg-white/8 p-5 shadow-card backdrop-blur">
                   <FileText className="text-amber-300" size={26} />
@@ -339,7 +339,7 @@ function App() {
         <section className={`bg-emerald-950 ${sectionShell} py-16 text-white`}>
           <div className={sectionInner}>
             <SectionHeader eyebrow="How We Teach" title="A Clear Study Rhythm" text="Concept-based teaching, doubt clearing, notes, and testing keep students consistent, confident, and exam-ready." dark />
-            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid w-full min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {teachingSteps.map((step, index) => (
                 <article key={step} className="rounded-3xl border border-white/10 bg-white/8 p-5 shadow-card backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/12">
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-amber-300 font-serif text-xl font-black text-emerald-950">{index + 1}</span>
@@ -368,8 +368,8 @@ function App() {
         <section id="contact" className={`bg-white/60 ${sectionShell} py-16`}>
           <div className={sectionInner}>
             <SectionHeader eyebrow="Contact" title="Visit or Call The Root Institute" text="Speak with the institute for admissions, class details, fees, and available seats." />
-            <div className="grid w-full gap-6 lg:grid-cols-[1fr_0.9fr]">
-              <div className="rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card sm:p-8">
+            <div className="grid w-full min-w-0 gap-6 lg:grid-cols-[1fr_0.9fr]">
+              <div className="min-w-0 rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card sm:p-8">
                 <dl className="grid gap-5 sm:grid-cols-2">
                   {[
                     ['Institute Name', INSTITUTE_NAME],
