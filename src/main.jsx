@@ -67,10 +67,13 @@ const teachingSteps = [
   'Revision before exams',
 ];
 
+const sectionShell = 'w-full max-w-full overflow-hidden px-4 sm:px-6 lg:px-8';
+const sectionInner = 'mx-auto w-full max-w-6xl';
+
 function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
+    <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
         <a href="#home" className="group flex items-center gap-3" aria-label="The Root Institute of Education home">
           <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-900 text-amber-300 shadow-soft transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
             <Sprout size={24} strokeWidth={2.4} />
@@ -100,7 +103,7 @@ function Header() {
         </div>
       </nav>
       <div className="border-t border-emerald-950/5 px-4 pb-3 lg:hidden">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="shrink-0 rounded-full bg-white px-3.5 py-2 text-xs font-bold text-emerald-950 shadow-card transition hover:bg-amber-100">
               {link.label}
@@ -114,10 +117,10 @@ function Header() {
 
 function HeroIllustration() {
   return (
-    <div className="relative mx-auto max-w-sm animate-float lg:max-w-md" aria-label="Tree growing from an open book illustration">
+    <div className="relative mx-auto w-full max-w-sm animate-float lg:max-w-md" aria-label="Tree growing from an open book illustration">
       <div className="absolute -left-8 top-10 h-24 w-24 rounded-full bg-amber-300/30 blur-2xl" />
       <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-emerald-500/20 blur-2xl" />
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white p-6 shadow-premium">
+      <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/80 bg-white p-6 shadow-premium">
         <div className="mb-6 flex items-center justify-between">
           <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">Bihar Board</span>
           <Sparkles className="text-amber-500" size={22} />
@@ -145,7 +148,7 @@ function HeroIllustration() {
               <div className="absolute left-14 top-12 h-20 w-20 rounded-full bg-emerald-500" />
             </div>
 
-            <div className="relative mt-[-2px] flex w-64 justify-center">
+            <div className="relative mt-[-2px] flex w-full max-w-[16rem] justify-center">
               <div className="h-16 w-32 origin-right skew-y-6 rounded-bl-3xl rounded-tl-lg border border-emerald-900/10 bg-white shadow-card" />
               <div className="h-16 w-32 origin-left -skew-y-6 rounded-br-3xl rounded-tr-lg border border-emerald-900/10 bg-amber-50 shadow-card" />
               <div className="absolute top-3 h-12 w-1 rounded-full bg-emerald-900/20" />
@@ -173,14 +176,14 @@ function SectionHeader({ eyebrow, title, text, dark = false }) {
 
 function App() {
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="min-h-screen w-full max-w-full overflow-hidden bg-cream text-slate-900">
       <Header />
-      <main>
-        <section id="home" className="relative overflow-hidden px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-20">
+      <main className="w-full max-w-full overflow-hidden">
+        <section id="home" className={`relative ${sectionShell} pb-16 pt-10 lg:pb-24 lg:pt-20`}>
           <div className="absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.18),transparent_32%),radial-gradient(circle_at_top_right,rgba(6,95,70,0.16),transparent_34%)]" />
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className={`${sectionInner} grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]`}>
             <div className="animate-rise text-center lg:text-left">
-              <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/80 px-4 py-2 text-sm font-bold text-emerald-900 shadow-card lg:mx-0">
+              <div className="mx-auto mb-6 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-amber-200 bg-white/80 px-4 py-2 text-sm font-bold text-emerald-900 shadow-card lg:mx-0">
                 <Sprout size={17} className="text-amber-600" />
                 Premium coaching for Bihar Board students
               </div>
@@ -203,8 +206,8 @@ function App() {
           </div>
         </section>
 
-        <section className="px-4 py-10 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <section className={`${sectionShell} py-10`}>
+          <div className={`${sectionInner} grid gap-4 sm:grid-cols-2 lg:grid-cols-4`}>
             {trustHighlights.map(({ title, text, icon: Icon }) => (
               <article key={title} className="group rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-800 transition group-hover:bg-emerald-900 group-hover:text-amber-300">
@@ -217,8 +220,8 @@ function App() {
           </div>
         </section>
 
-        <section id="about" className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
+        <section id="about" className={`${sectionShell} py-16`}>
+          <div className={`${sectionInner} grid gap-8 rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:p-12`}>
             <div className="rounded-[1.5rem] bg-emerald-950 p-8 text-white">
               <p className="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">About</p>
               <h2 className="mt-4 font-serif text-3xl font-bold">About The Root Institute</h2>
@@ -235,9 +238,10 @@ function App() {
           </div>
         </section>
 
-        <section id="classes" className="bg-white/55 px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Classes" title="Focused Coaching for Class 8, 9 and 10" text="Each batch is designed around Bihar Board syllabus needs, regular practice, and steady academic improvement." />
-          <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+        <section id="classes" className={`bg-white/55 ${sectionShell} py-16`}>
+          <div className={sectionInner}>
+            <SectionHeader eyebrow="Classes" title="Focused Coaching for Class 8, 9 and 10" text="Each batch is designed around Bihar Board syllabus needs, regular practice, and steady academic improvement." />
+            <div className="grid w-full gap-5 md:grid-cols-3">
             {classCards.map((className) => (
               <article key={className} className="rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                 <div className="mb-5 flex items-center justify-between">
@@ -257,12 +261,14 @@ function App() {
                 </ul>
               </article>
             ))}
+            </div>
           </div>
         </section>
 
-        <section id="why-us" className="px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Why Choose Us" title="A Premium Local Institute with Personal Care" text="Parents can trust a disciplined, simple, and concept-first approach made for school success and board readiness." />
-          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="why-us" className={`${sectionShell} py-16`}>
+          <div className={sectionInner}>
+            <SectionHeader eyebrow="Why Choose Us" title="A Premium Local Institute with Personal Care" text="Parents can trust a disciplined, simple, and concept-first approach made for school success and board readiness." />
+            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {whyUs.map(({ title, icon: Icon }) => (
               <article key={title} className="flex items-start gap-4 rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                 <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-900 text-amber-300">
@@ -271,23 +277,27 @@ function App() {
                 <h3 className="pt-2 font-serif text-xl font-bold leading-7 text-emerald-950">{title}</h3>
               </article>
             ))}
+            </div>
           </div>
         </section>
 
-        <section className="bg-emerald-950 px-4 py-16 text-white sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="How We Teach" title="How We Teach" text="A clear weekly rhythm keeps students consistent, confident, and ready for exams." dark />
-          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <section className={`bg-emerald-950 ${sectionShell} py-16 text-white`}>
+          <div className={sectionInner}>
+            <SectionHeader eyebrow="How We Teach" title="How We Teach" text="A clear weekly rhythm keeps students consistent, confident, and ready for exams." dark />
+            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {teachingSteps.map((step, index) => (
               <article key={step} className="rounded-3xl border border-white/10 bg-white/8 p-5 shadow-card backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/12">
                 <span className="grid h-11 w-11 place-items-center rounded-2xl bg-amber-300 font-serif text-xl font-black text-emerald-950">{index + 1}</span>
                 <h3 className="mt-5 font-serif text-xl font-bold">{step}</h3>
               </article>
             ))}
+            </div>
           </div>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-amber-400 via-amber-300 to-emerald-200 p-1 shadow-premium">
+        <section className={`${sectionShell} py-16`}>
+          <div className={sectionInner}>
+            <div className="mx-auto w-full max-w-5xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-amber-400 via-amber-300 to-emerald-200 p-1 shadow-premium">
             <div className="rounded-[calc(2rem-4px)] bg-emerald-950 px-6 py-10 text-center text-white sm:px-10">
               <p className="text-sm font-bold uppercase tracking-[0.28em] text-amber-200">Admission Open</p>
               <h2 className="mt-4 font-serif text-3xl font-bold sm:text-4xl">Admission Open for Class 8, 9 and 10</h2>
@@ -295,12 +305,14 @@ function App() {
                 <Phone size={19} /> Call for Admission
               </a>
             </div>
+            </div>
           </div>
         </section>
 
-        <section id="contact" className="bg-white/60 px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Contact" title="Visit or Call The Root Institute" text="Use the placeholder phone number and address below, then replace them with your institute details when ready." />
-          <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.9fr]">
+        <section id="contact" className={`bg-white/60 ${sectionShell} py-16`}>
+          <div className={sectionInner}>
+            <SectionHeader eyebrow="Contact" title="Visit or Call The Root Institute" text="Use the placeholder phone number and address below, then replace them with your institute details when ready." />
+            <div className="grid w-full gap-6 lg:grid-cols-[1fr_0.9fr]">
             <div className="rounded-[2rem] border border-emerald-950/10 bg-white p-6 shadow-card sm:p-8">
               <dl className="grid gap-5 sm:grid-cols-2">
                 {[
@@ -330,10 +342,11 @@ function App() {
                 </a>
               </div>
             </div>
+            </div>
           </div>
         </section>
       </main>
-      <footer className="border-t border-emerald-950/10 bg-cream px-4 py-8 text-center text-sm font-medium text-slate-600">
+      <footer className="w-full max-w-full overflow-hidden border-t border-emerald-950/10 bg-cream px-4 py-8 text-center text-sm font-medium text-slate-600">
         © 2026 The Root Institute of Education. All rights reserved.
       </footer>
     </div>

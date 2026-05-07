@@ -4,6 +4,21 @@
 @tailwind utilities;
 
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#__next {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -19,6 +34,13 @@ body {
 
 section {
   scroll-margin-top: 5.5rem;
+}
+
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
 }
 
 .bg-white\/8 {
