@@ -91,11 +91,9 @@ function Header() {
     <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
       <nav className="mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-3 overflow-hidden px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
         <a href="#home" className="group flex min-w-0 flex-1 items-center gap-3 overflow-hidden" aria-label="The Root Institute of Education home" onClick={closeMenu}>
-          <img
-            src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
-            alt="The Root Institute of Education Logo"
-            className="h-10 w-10 shrink-0 rounded-full object-cover"
-          />
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-900 text-amber-300 shadow-soft transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
+            <Sprout size={24} strokeWidth={2.4} />
+          </span>
           <span className="min-w-0 leading-tight">
             <span className="block truncate font-serif text-lg font-bold tracking-tight text-emerald-950 sm:text-xl">The Root Institute</span>
             <span className="block truncate text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">of Education</span>
@@ -153,16 +151,12 @@ function HeroIllustration() {
           <div className="absolute bottom-8 right-5 rounded-2xl bg-white/85 px-3 py-2 text-xs font-bold text-emerald-900 shadow-card sm:right-8">Maths</div>
 
           <div className="relative mt-6 flex flex-col items-center">
-            <div className="relative h-36 w-40">
-              <div className="absolute bottom-0 left-1/2 h-28 w-4 -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-700 to-amber-900" />
-              <div className="absolute bottom-14 left-1/2 h-14 w-3 origin-bottom -rotate-45 rounded-full bg-amber-800" />
-              <div className="absolute bottom-16 left-1/2 h-16 w-3 origin-bottom rotate-45 rounded-full bg-amber-800" />
-              <div className="absolute left-8 top-4 grid h-24 w-24 place-items-center rounded-full bg-emerald-700 text-white shadow-soft">
-                <Leaf size={32} />
-              </div>
-              <div className="absolute right-6 top-0 h-20 w-20 rounded-full bg-emerald-600" />
-              <div className="absolute left-20 top-0 h-24 w-24 rounded-full bg-emerald-800/95" />
-              <div className="absolute left-14 top-12 h-20 w-20 rounded-full bg-emerald-500" />
+            <div className="relative grid h-36 w-40 place-items-center">
+              <img
+                src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
+                alt="The Root Institute of Education Logo"
+                className="h-24 w-24 shrink-0 rounded-full object-cover shadow-soft sm:h-28 sm:w-28"
+              />
             </div>
 
             <div className="relative mt-[-2px] flex w-full max-w-[16rem] justify-center">
@@ -228,15 +222,7 @@ function App() {
             {trustHighlights.map(({ title, text, icon: Icon }) => (
               <article key={title} className="group rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-800 transition group-hover:bg-emerald-900 group-hover:text-amber-300">
-                  {title === 'CBSE & Bihar Board' ? (
-                    <img
-                      src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
-                      alt="The Root Institute of Education Logo"
-                      className="h-10 w-10 rounded-full object-cover shrink-0"
-                    />
-                  ) : (
-                    <Icon size={24} />
-                  )}
+                  <Icon size={24} />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-emerald-950">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
