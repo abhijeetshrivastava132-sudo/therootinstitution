@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   BookOpen,
@@ -9,6 +9,7 @@ import {
   FileText,
   GraduationCap,
   Leaf,
+  Menu,
   MapPin,
   MessageCircle,
   Phone,
@@ -18,6 +19,7 @@ import {
   Target,
   Trophy,
   UserCheck,
+  X,
 } from 'lucide-react';
 import './styles.css';
 
@@ -27,13 +29,10 @@ const WHATSAPP_LINK = 'https://wa.me/916202224083';
 const DIRECTOR = 'Prashant Srivastava';
 const INSTITUTE_NAME = 'The Root Institute of Education';
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
+const menuLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Classes', href: '#classes' },
-  { label: 'Notes', href: '#notes' },
-  { label: 'Tests', href: '#tests' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Location', href: '#location' },
 ];
 
 const trustHighlights = [
@@ -84,10 +83,14 @@ const sectionShell = 'w-full max-w-full overflow-hidden px-4 sm:px-6 lg:px-8';
 const sectionInner = 'mx-auto w-full max-w-6xl min-w-0';
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
       <nav className="mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-3 overflow-hidden px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
-        <a href="#home" className="group flex min-w-0 flex-1 items-center gap-3 overflow-hidden" aria-label="The Root Institute of Education home">
+        <a href="#home" className="group flex min-w-0 flex-1 items-center gap-3 overflow-hidden" aria-label="The Root Institute of Education home" onClick={closeMenu}>
           <img
             src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
             alt="The Root Institute of Education Logo"
@@ -99,25 +102,26 @@ function Header() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-semibold text-emerald-950/75 transition hover:text-emerald-800">
-              {link.label}
-            </a>
-          ))}
-        </div>
-
         <div className="flex shrink-0 items-center gap-2">
-          <a href={PHONE_LINK} className="inline-flex items-center gap-2 rounded-full bg-emerald-900 px-4 py-2.5 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-800">
-            <Phone size={16} />
-            <span className="hidden sm:inline">Call Now</span>
-          </a>
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 rounded-full bg-emerald-900 px-4 py-2.5 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-800"
+            aria-controls="primary-menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? <X size={16} /> : <Menu size={16} />}
+            <span className="hidden sm:inline">Menu</span>
+          </button>
         </div>
       </nav>
-      <div className="w-full max-w-full overflow-hidden border-t border-emerald-950/5 px-4 pb-3 lg:hidden">
-        <div className="mx-auto flex w-full max-w-6xl min-w-0 gap-2 overflow-x-auto pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="shrink-0 rounded-full bg-white px-3.5 py-2 text-xs font-bold text-emerald-950 shadow-card transition hover:bg-amber-100">
+      <div
+        id="primary-menu"
+        className={`w-full max-w-full overflow-hidden border-t border-emerald-950/5 px-4 transition-all duration-300 ease-out sm:px-6 lg:px-8 ${isMenuOpen ? 'max-h-40 pb-3 opacity-100' : 'max-h-0 pb-0 opacity-0'}`}
+      >
+        <div className="mx-auto flex w-full max-w-6xl min-w-0 flex-col gap-2 pt-3 sm:flex-row sm:justify-end">
+          {menuLinks.map((link) => (
+            <a key={link.href} href={link.href} className="rounded-full bg-white px-4 py-2.5 text-center text-sm font-bold text-emerald-950 shadow-card transition hover:bg-amber-100" onClick={closeMenu}>
               {link.label}
             </a>
           ))}
@@ -198,7 +202,7 @@ function App() {
             <div className="animate-rise text-center lg:text-left">
               <div className="mx-auto mb-6 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-amber-200 bg-white/80 px-4 py-2 text-sm font-bold text-emerald-900 shadow-card lg:mx-0">
                 <Sprout size={17} className="text-amber-600" />
-                Premium coaching for students and parents
+                Learn. Grow. Succeed.
               </div>
               <h1 className="break-words font-serif text-5xl font-black leading-[1.05] tracking-tight text-emerald-950 sm:text-6xl lg:text-7xl">
                 Strong Roots. <span className="text-amber-600">Bright Future.</span>
@@ -224,7 +228,15 @@ function App() {
             {trustHighlights.map(({ title, text, icon: Icon }) => (
               <article key={title} className="group rounded-3xl border border-emerald-950/10 bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft">
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-800 transition group-hover:bg-emerald-900 group-hover:text-amber-300">
-                  <Icon size={24} />
+                  {title === 'CBSE & Bihar Board' ? (
+                    <img
+                      src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
+                      alt="The Root Institute of Education Logo"
+                      className="h-10 w-10 rounded-full object-cover shrink-0"
+                    />
+                  ) : (
+                    <Icon size={24} />
+                  )}
                 </div>
                 <h3 className="font-serif text-xl font-bold text-emerald-950">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
@@ -359,6 +371,16 @@ function App() {
                   <Phone size={19} /> Call for Admission
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="location" className={`${sectionShell} py-16`}>
+          <div className={sectionInner}>
+            <div className="mx-auto w-full max-w-5xl rounded-[2rem] border border-emerald-950/10 bg-white p-6 text-center shadow-card sm:p-10">
+              <MapPin className="mx-auto text-amber-600" size={34} />
+              <h2 className="mt-4 font-serif text-3xl font-bold text-emerald-950 sm:text-4xl">Location</h2>
+              <p className="mt-4 text-lg leading-8 text-slate-600">Location will be updated soon.</p>
             </div>
           </div>
         </section>
