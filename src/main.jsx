@@ -10,7 +10,6 @@ import {
   GraduationCap,
   Leaf,
   MapPin,
-  Menu,
   MessageCircle,
   Phone,
   Sparkles,
@@ -89,9 +88,11 @@ function Header() {
     <header className="sticky top-0 z-50 w-full max-w-full overflow-hidden border-b border-emerald-950/10 bg-cream/90 backdrop-blur-xl">
       <nav className="mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-3 overflow-hidden px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
         <a href="#home" className="group flex min-w-0 flex-1 items-center gap-3 overflow-hidden" aria-label="The Root Institute of Education home">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-900 text-amber-300 shadow-soft transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
-            <Sprout size={24} strokeWidth={2.4} />
-          </span>
+          <img
+            src="https://i.ibb.co/fYHCZszY/Root-Classes-4.png"
+            alt="The Root Institute of Education Logo"
+            className="h-10 w-10 shrink-0 rounded-full object-cover"
+          />
           <span className="min-w-0 leading-tight">
             <span className="block truncate font-serif text-lg font-bold tracking-tight text-emerald-950 sm:text-xl">The Root Institute</span>
             <span className="block truncate text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">of Education</span>
@@ -111,9 +112,6 @@ function Header() {
             <Phone size={16} />
             <span className="hidden sm:inline">Call Now</span>
           </a>
-          <button className="grid h-10 w-10 place-items-center rounded-full border border-emerald-950/10 text-emerald-950 lg:hidden" aria-label="Navigation menu">
-            <Menu size={20} />
-          </button>
         </div>
       </nav>
       <div className="w-full max-w-full overflow-hidden border-t border-emerald-950/5 px-4 pb-3 lg:hidden">
@@ -206,7 +204,7 @@ function App() {
                 Strong Roots. <span className="text-amber-600">Bright Future.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-650 lg:mx-0">
-                Premium coaching for Class 6 to 10 all subjects and Class 11 to 12 Mathematics, for CBSE and Bihar Board students.
+                Premium coaching for students.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
                 <a href={PHONE_LINK} className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-900 px-6 py-4 text-base font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-emerald-800">
